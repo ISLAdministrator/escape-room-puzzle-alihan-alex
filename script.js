@@ -4,9 +4,11 @@ console.log("Script loaded");
 // you can use it, expand on it, or delete it
 // that all depends on your team's plan.
 
-const button = document.getElementById("button");
-const output = document.getElementById("output");
+const scene = document.getElementById("scene");
+const imageButton = document.getElementById("imageButton");
 
-button.addEventListener("click", function () {
-  output.textContent = "JavaScript is working.";
+imageButton.addEventListener("click", function () {
+  scene.style.backgroundImage = 'url("background2.jpg")';
+  imageButton.style.display = "none";
+});
 });
