@@ -45,3 +45,30 @@ body {
   width: 200px;
   height: auto;
 }
+#gear{
+  position: absolute;
+  top: 520px;
+  left: 730px;
+  width: 100px;
+}
+
+#bolt{
+  position: absolute;
+  top: 740px;
+  left: 1670px;
+  width: 80px;
+}
+
+#spring{
+  position: absolute;
+  top: 800px;
+  left: 650px;
+  width: 90px;
+}
+
+#nut{
+  position: absolute;
+  top: 520px;
+  left: 1040px;
+  width: 85px;
+}
