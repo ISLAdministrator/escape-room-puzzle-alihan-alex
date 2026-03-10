@@ -1,74 +1,67 @@
-/*
-This is a CSS comment :) Text just for humans, it is not part of the code
-Below is basic CSS styling.
-You can change it, add to it, or delete it.
-*/
-
 body {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #111;
 }
 
 #scene {
-  width: 100vw;
-  height: 100vh;
-  background-image: url("background_intro.jpg");
+  width: 1000px;
+  height: 600px;
+  position: relative;
+  background-color: black;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+  overflow: hidden;
 }
 
-/* TEXT BOX */
 #textBox {
-  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 30px;
+  left: 30px;
   color: white;
-
-  padding: 20px 30px;
-  border-radius: 20px;
-
-  font-size: 24px;   /* change this freely */
-  max-width: 80%;
-  text-align: center;
-
-  width: fit-content;   /* expands to content */
-  height: auto;
+  font-size: 24px;
+  z-index: 10;
 }
 
-/* IMAGE BUTTON */
 #imageButton {
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  width: 180px;
   cursor: pointer;
-  width: 200px;
-  height: auto;
-}
-#gear{
-  position: absolute;
-  top: 520px;
-  left: 730px;
-  width: 100px;
+  z-index: 10;
 }
 
-#bolt{
+/* Hidden at start */
+#gear, #bolt, #spring, #nut {
+  display: none;
   position: absolute;
-  top: 740px;
-  left: 1670px;
-  width: 80px;
+  cursor: pointer;
 }
 
-#spring{
-  position: absolute;
-  top: 800px;
-  left: 650px;
-  width: 90px;
+/* Size + position each item */
+#gear {
+  width: 140px;
+  top: 280px;
+  left: 180px;
 }
 
-#nut{
-  position: absolute;
-  top: 520px;
-  left: 1040px;
-  width: 85px;
+#bolt {
+  width: 120px;
+  top: 330px;
+  left: 340px;
+}
+
+#spring {
+  width: 120px;
+  top: 290px;
+  left: 520px;
+}
+
+#nut {
+  width: 130px;
+  top: 250px;
+  left: 720px;
 }
