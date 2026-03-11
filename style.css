@@ -52,31 +52,31 @@ body {
 
 /* Size + position each item */
 #gear {
-  width: 15px;
-  top: 290px;
-  left: 180px;
+  width: 25px;
+  top: 400px;
+  left: 300px;
 }
 
 #bolt {
-  width: 20px;
-  top: 170px;
-  left: 425px;
+  width: 28px;
+  top: 228px;
+  left: 635px;
 }
 
 #spring {
-  width: 28px;
-  top: 210px;
-  left: 90px;
+  width: 30px;
+  top: 300px;
+  left: 175px;
 }
 
 #nut {
-  width: 10px;
-  top: 290px;
-  left: 870px;
+  width: 17px;
+  top: 390px;
+  left: 1270px;
 }
 
 #scene {
-  width: 1400px;
+  width: 1500px;
   height: 800px;
   position: relative;
   background-size: cover;
