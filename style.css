@@ -31,7 +31,6 @@ body {
   left: 400px;
   width: 180px;
   cursor: pointer;
-<<<<<<< HEAD
   width: 200px;
   height: auto;
 }
@@ -40,45 +39,38 @@ body {
   top: 520px;
   left: 730px;
   width: 80px;
-=======
-  z-index: 10;
->>>>>>> 635236243cf4fc172d95741d12c0133332a0c9d0
 }
 
 /* Hidden at start */
 #gear, #bolt, #spring, #nut {
   display: none;
   position: absolute;
-<<<<<<< HEAD
   top: 740px;
   left: 1670px;
   width: 60px;
-=======
-  cursor: pointer;
->>>>>>> 635236243cf4fc172d95741d12c0133332a0c9d0
 }
 
 /* Size + position each item */
 #gear {
-  width: 140px;
-  top: 280px;
+  width: 15px;
+  top: 290px;
   left: 180px;
 }
 
 #bolt {
-  width: 120px;
-  top: 330px;
-  left: 340px;
+  width: 20px;
+  top: 170px;
+  left: 425px;
 }
 
 #spring {
-  width: 120px;
-  top: 290px;
-  left: 520px;
+  width: 28px;
+  top: 210px;
+  left: 90px;
 }
 
 #nut {
-  width: 130px;
-  top: 250px;
-  left: 720px;
+  width: 10px;
+  top: 290px;
+  left: 870px;
 }
