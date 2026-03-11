@@ -74,3 +74,10 @@ body {
   top: 290px;
   left: 870px;
 }
+
+#scene {
+  width: 1400px;
+  height: 800px;
+  position: relative;
+  background-size: cover;
+}
