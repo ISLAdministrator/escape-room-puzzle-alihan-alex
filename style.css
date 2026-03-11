@@ -1,47 +1,83 @@
-/*
-This is a CSS comment :) Text just for humans, it is not part of the code
-Below is basic CSS styling.
-You can change it, add to it, or delete it.
-*/
-
 body {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #111;
 }
 
 #scene {
-  width: 100vw;
-  height: 100vh;
-  background-image: url("background1.jpg");
+  width: 1000px;
+  height: 600px;
+  position: relative;
+  background-color: black;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+  overflow: hidden;
 }
 
-/* TEXT BOX */
 #textBox {
-  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 30px;
+  left: 30px;
   color: white;
-
-  padding: 20px 30px;
-  border-radius: 20px;
-
-  font-size: 24px;   /* change this freely */
-  max-width: 80%;
-  text-align: center;
-
-  width: fit-content;   /* expands to content */
-  height: auto;
+  font-size: 24px;
+  z-index: 10;
 }
 
-/* IMAGE BUTTON */
 #imageButton {
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  width: 180px;
   cursor: pointer;
   width: 200px;
   height: auto;
+}
+#gear{
+  position: absolute;
+  top: 520px;
+  left: 730px;
+  width: 80px;
+}
+
+/* Hidden at start */
+#gear, #bolt, #spring, #nut {
+  display: none;
+  position: absolute;
+  top: 740px;
+  left: 1670px;
+  width: 60px;
+}
+
+/* Size + position each item */
+#gear {
+  width: 25px;
+  top: 400px;
+  left: 300px;
+}
+
+#bolt {
+  width: 28px;
+  top: 228px;
+  left: 635px;
+}
+
+#spring {
+  width: 30px;
+  top: 300px;
+  left: 175px;
+}
+
+#nut {
+  width: 17px;
+  top: 390px;
+  left: 1270px;
+}
+
+#scene {
+  width: 1500px;
+  height: 800px;
+  position: relative;
+  background-size: cover;
 }
