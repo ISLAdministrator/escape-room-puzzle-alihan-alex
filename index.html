@@ -1,23 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Escape Room</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>307 Design - Reassembling Machine</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="scene">
-    <div id="textBox">
-      You are now in the design room.<br>
-      Created by Alex & Alihan.
+  <div id="introScreen">
+    <div class="introCard">
+      <h1>ISL Apocalypse</h1>
+      <p>
+        You leave the auditorium and step into the hallway. Thick green sludge drips
+        from the ceiling and smears the floor. The school is silent.
+      </p>
+      <p>
+        No teachers. No students. No voices.
+      </p>
+      <p>
+        You enter <strong>Room 307 - Design</strong> and discover a damaged machine on the
+        table. Four visible parts are scattered around the room.
+      </p>
+      <p class="missionText">
+        Mission: Rebuild the machine to reveal what is missing.
+      </p>
+      <button id="startGameBtn">Start Investigation</button>
     </div>
+  </div>
 
-    <img id="imageButton" src="start_button1.png" alt="Start Button">
+  <div id="gameWrapper">
+    <header>
+      <h1>307 Design - Reassembling Machine</h1>
+      <p class="subtitle">
+        Find the four visible machine parts hidden around the room and click them to install them.
+      </p>
+    </header>
 
-    <img id="gear" src="gear.png" alt="Gear">
-    <img id="bolt" src="bolt.png" alt="Bolt">
-    <img id="spring" src="spring.png" alt="Spring">
-    <img id="nut" src="metal_nut.png" alt="Nut">
+    <main id="scene">
+      <div id="storyBox">
+        <strong>START:</strong> You enter the dark design room and find a damaged machine on the table.
+        Rebuild it to discover what part is missing.
+      </div>
+
+      <div id="machineArea">
+        <div id="machine">
+          <div class="machine-title">Damaged Machine</div>
+
+          <!-- 5 horizontal slots matching the machine screens -->
+          <div class="slot horizontal-slot" id="slot-1"></div>
+          <div class="slot horizontal-slot" id="slot-2"></div>
+          <div class="slot horizontal-slot hidden-drive-slot" id="slot-3"></div>
+          <div class="slot horizontal-slot" id="slot-4"></div>
+          <div class="slot horizontal-slot" id="slot-5"></div>
+        </div>
+      </div>
+
+      <!-- hidden parts around room -->
+      <img class="part" id="gear" data-part="gear" src="gear.png" alt="Gear" />
+      <img class="part" id="bolt" data-part="bolt" src="bolt.png" alt="Bolt" />
+      <img class="part" id="spring" data-part="spring" src="spring.png" alt="Spring" />
+      <img class="part" id="nut" data-part="nut" src="metal_nut.png" alt="Nut" />
+
+      <div id="messageBox">
+        Click a hidden part to install it into the machine.
+      </div>
+
+      <div id="finalReveal" class="hidden">
+        <div class="finalCard">
+          <h2>Machine Reassembled... Almost.</h2>
+          <p>All four visible parts have been installed.</p>
+          <p>The system powers on, but something is still wrong.</p>
+          <p><strong>The storage drive is missing.</strong></p>
+          <p>The rat stole it.</p>
+          <p class="clue">Clue Letter: <span>Y</span></p>
+        </div>
+      </div>
+    </main>
   </div>
 
   <script src="script.js"></script>

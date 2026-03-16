@@ -1,83 +1,293 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background: #111;
-}
-
-#scene {
-  width: 1000px;
-  height: 600px;
-  position: relative;
-  background-color: black;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-
-#textBox {
-  position: absolute;
-  top: 30px;
-  left: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #091018;
   color: white;
-  font-size: 24px;
-  z-index: 10;
 }
 
-#imageButton {
-  position: absolute;
-  top: 200px;
-  left: 400px;
-  width: 180px;
+/* INTRO SCREEN */
+#introScreen {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(4, 7, 10, 0.82), rgba(4, 7, 10, 0.9)),
+    url("Background.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.introCard {
+  width: min(700px, 90%);
+  padding: 34px;
+  background: rgba(10, 16, 22, 0.9);
+  border: 2px solid rgba(120, 150, 170, 0.5);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
+}
+
+.introCard h1 {
+  margin-top: 0;
+  font-size: 2.2rem;
+}
+
+.introCard p {
+  line-height: 1.6;
+  color: #d9e2ea;
+}
+
+.missionText {
+  color: #ffe2a8;
+  font-weight: bold;
+}
+
+#startGameBtn {
+  margin-top: 14px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(#f59b52, #ca6830);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  width: 200px;
-  height: auto;
-}
-#gear{
-  position: absolute;
-  top: 520px;
-  left: 730px;
-  width: 80px;
+  transition: 0.2s;
 }
 
-/* Hidden at start */
-#gear, #bolt, #spring, #nut {
-  display: none;
-  position: absolute;
-  top: 740px;
-  left: 1670px;
-  width: 60px;
+#startGameBtn:hover {
+  transform: scale(1.05);
 }
 
-/* Size + position each item */
+/* PAGE HEADER */
+#gameWrapper {
+  max-width: 1500px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  padding: 16px 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: #d4dde5;
+}
+
+/* MAIN SCENE */
+#scene {
+  position: relative;
+  width: 100%;
+  height: 820px;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 2px solid #334553;
+  background:
+    linear-gradient(rgba(7, 13, 18, 0.35), rgba(7, 13, 18, 0.38)),
+    url("Background.png") center/cover no-repeat;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+}
+
+/* STORY BOX */
+#storyBox {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 480px;
+  max-width: calc(100% - 40px);
+  padding: 16px;
+  background: rgba(5, 10, 15, 0.75);
+  border: 1px solid rgba(136, 171, 194, 0.55);
+  border-radius: 15px;
+  line-height: 1.5;
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
+
+#machineArea {
+  position: absolute;
+  left: 50%;
+  bottom: 235px;
+  transform: translateX(-50%);
+  width: 100%;           /* Changed to 100% so it fits the screen */
+  max-width: 1260px;     /* Caps the maximum width */
+  height: 150px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+#machine {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;                 /* Turns on Flexbox */
+  justify-content: space-evenly; /* Automatically spaces your boxes evenly! */
+  align-items: center;           /* Centers them vertically */
+}
+
+.machine-title {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px black;
+  color: white;
+}
+
+/* MACHINE SLOTS */
+.slot {
+  /* position: absolute; REMOVED */
+  pointer-events: auto; /* Added so you can still click/interact with the slots */
+  width: 128px;
+  height: 128px;
+  border: 3px dashed rgba(170, 188, 202, 0.78);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(80, 180, 255, 0.04);
+  transition: 0.25s;
+}
+
+.slot.filled {
+  border-style: solid;
+  border-color: rgba(157, 255, 198, 0.9);
+  background: rgba(157, 255, 198, 0.08);
+  box-shadow: 0 0 14px rgba(157, 255, 198, 0.18);
+}
+
+.slot.missing {
+  border-style: solid;
+  border-color: rgba(255, 110, 110, 0.9);
+  background: rgba(255, 90, 90, 0.08);
+  box-shadow: 0 0 18px rgba(255, 90, 90, 0.22);
+  color: #ffb0b0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hidden-drive-slot {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+
+.slotPart {
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: contain;
+}
+
+/* HIDDEN PARTS */
+.part {
+  position: absolute;
+  cursor: pointer;
+  transition: 0.2s;
+  z-index: 4;
+}
+
+.part:hover {
+  transform: scale(1.1);
+}
+
+/* smaller + harder to find */
 #gear {
-  width: 25px;
-  top: 400px;
-  left: 300px;
+  width: 22px;
+  left: 100px;
+  bottom: 80px;
 }
 
 #bolt {
-  width: 28px;
-  top: 228px;
-  left: 635px;
+  width: 30px;
+  right: 135px;
+  bottom: 62px;
 }
 
 #spring {
-  width: 30px;
-  top: 300px;
-  left: 175px;
+  width: 26px;
+  left: 315px;
+  top: 310px;
 }
 
 #nut {
-  width: 17px;
-  top: 390px;
-  left: 1270px;
+  width: 14px;
+  right: 292px;
+  top: 555px;
 }
 
-#scene {
-  width: 1500px;
-  height: 800px;
-  position: relative;
-  background-size: cover;
+/* MESSAGE BOX */
+#messageBox {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 15px;
+  text-align: center;
+  background: rgba(3, 7, 11, 0.82);
+  border: 1px solid rgba(103, 132, 151, 0.65);
+  border-radius: 14px;
+  z-index: 6;
+}
+
+/* FLYING PART */
+.flyingPart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  transition: all 0.7s ease-in-out;
+}
+
+/* FINAL SCREEN */
+#finalReveal {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 8, 12, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.finalCard {
+  width: min(700px, 88%);
+  padding: 34px;
+  background: rgba(11, 17, 24, 0.94);
+  border: 2px solid rgba(120, 150, 170, 0.45);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.finalCard h2 {
+  margin-top: 0;
+}
+
+.clue {
+  margin-top: 16px;
+  color: #ffe08a;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.clue span {
+  font-size: 2rem;
+  color: #fff16e;
+  text-shadow: 0 0 10px rgba(255, 241, 110, 0.35);
+}
+
+/* IMPORTANT */
+.hidden {
+  display: none !important;
 }
