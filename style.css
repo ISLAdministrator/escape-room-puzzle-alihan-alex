@@ -244,26 +244,26 @@ header h1 {
 
 #gear {
   width: 22px;
-  left: 100px;
-  bottom: 80px;
+  left: 380px;
+  top: 250px;
 }
 
 #bolt {
   width: 30px;
-  right: 135px;
-  bottom: 62px;
+  right: 120px;
+  top: 300px;
 }
 
 #spring {
   width: 26px;
-  left: 315px;
-  top: 310px;
+  left: 250px;
+  bottom: 220px;
 }
 
 #nut {
   width: 14px;
-  right: 100px;
-  top: 555px;
+  right: 110px;
+  bottom: 130px;
 }
 
 

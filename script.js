@@ -1,4 +1,22 @@
-const introScreen = document.getElementById("introScreen");
+// --- YOUTUBE BACKGROUND MUSIC ---
+let ytPlayer;
+
+// Called by the YouTube API automatically
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player("yt-player", {
+    height: "0",
+    width: "0",
+    videoId: "3Vk_QfSiVbI", // Your YouTube music ID
+    playerVars: {
+      autoplay: 0,        // Don't start automatically
+      loop: 1,            // Loop music
+      controls: 0,        // Hide controls
+      showinfo: 0,
+      modestbranding: 1,
+      playlist: "3Vk_QfSiVbI" // Needed for looping
+    }
+  });
+}const introScreen = document.getElementById("introScreen");
 const startGameBtn = document.getElementById("startGameBtn");
 
 const messageBox = document.getElementById("messageBox");
