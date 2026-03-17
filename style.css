@@ -1,11 +1,7 @@
 * {
   box-sizing: border-box;
 }
-<!-- YouTube Player (hidden) -->
-<div id="yt-player" style="display:none;"></div>
 
-<!-- Load YouTube IFrame API -->
-<script src="https://www.youtube.com/iframe_api"></script>
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
