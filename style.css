@@ -9,7 +9,6 @@ body {
   color: white;
 }
 
-/* INTRO SCREEN */
 #introScreen {
   position: fixed;
   inset: 0;
@@ -64,7 +63,6 @@ body {
   transform: scale(1.05);
 }
 
-/* PAGE HEADER */
 #gameWrapper {
   max-width: 1500px;
   margin: auto;
@@ -84,7 +82,7 @@ header h1 {
   color: #d4dde5;
 }
 
-/* MAIN SCENE */
+
 #scene {
   position: relative;
   width: 100%;
@@ -98,7 +96,7 @@ header h1 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
 }
 
-/* STORY BOX */
+
 #storyBox {
   position: absolute;
   top: 20px;
@@ -119,8 +117,8 @@ header h1 {
   left: 50%;
   bottom: 235px;
   transform: translateX(-50%);
-  width: 100%;           /* Changed to 100% so it fits the screen */
-  max-width: 1260px;     /* Caps the maximum width */
+  width: 100%;           
+  max-width: 1260px;     
   height: 150px;
   z-index: 3;
   pointer-events: none;
@@ -130,9 +128,9 @@ header h1 {
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;                 /* Turns on Flexbox */
-  justify-content: space-evenly; /* Automatically spaces your boxes evenly! */
-  align-items: center;           /* Centers them vertically */
+  display: flex;                 
+  justify-content: space-evenly; 
+  align-items: center;           
 }
 
 .machine-title {
@@ -145,36 +143,77 @@ header h1 {
   color: white;
 }
 
-/* MACHINE SLOTS */
+
+/* MACHINE AREA — aligned to the 5 monitor screens */
+#machineArea {
+  position: absolute;
+  left: 50%;
+  bottom: 282px;
+  transform: translateX(-50%);
+  width: 920px;
+  height: 110px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+#machine {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.machine-title {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 0 0 8px black;
+}
+
 .slot {
-  /* position: absolute; REMOVED */
-  pointer-events: auto; /* Added so you can still click/interact with the slots */
-  width: 128px;
-  height: 128px;
-  border: 3px dashed rgba(170, 188, 202, 0.78);
-  border-radius: 10px;
+  position: absolute;
+  width: 96px;
+  height: 110px;
+  border: 2px dashed rgba(200, 220, 230, 0.8);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(80, 180, 255, 0.04);
-  transition: 0.25s;
+  background: rgba(100, 200, 255, 0.04);
 }
 
 .slot.filled {
   border-style: solid;
-  border-color: rgba(157, 255, 198, 0.9);
-  background: rgba(157, 255, 198, 0.08);
-  box-shadow: 0 0 14px rgba(157, 255, 198, 0.18);
+  border-color: #7fffba;
+  box-shadow: 0 0 10px rgba(127, 255, 186, 0.3);
 }
 
 .slot.missing {
   border-style: solid;
-  border-color: rgba(255, 110, 110, 0.9);
-  background: rgba(255, 90, 90, 0.08);
-  box-shadow: 0 0 18px rgba(255, 90, 90, 0.22);
+  border-color: #ff6b6b;
   color: #ffb0b0;
   font-weight: bold;
-  letter-spacing: 1px;
+}
+
+.hidden-drive-slot {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* aligned to each of the 5 screens */
+#slot-1 { left: 175px;  top: -75px; }
+#slot-2 { left: 300px; top: -75px; }
+#slot-3 { left: 430px; top: -75px; }
+#slot-4 { left: 560px; top: -75px; }
+#slot-5 { left: 690px; top: -75px; }
+
+.slotPart {
+  max-width: 42px;
+  max-height: 42px;
+  object-fit: contain;
 }
 
 .hidden-drive-slot {
@@ -202,7 +241,7 @@ header h1 {
   transform: scale(1.1);
 }
 
-/* smaller + harder to find */
+
 #gear {
   width: 22px;
   left: 100px;
@@ -223,11 +262,11 @@ header h1 {
 
 #nut {
   width: 14px;
-  right: 292px;
+  right: 100px;
   top: 555px;
 }
 
-/* MESSAGE BOX */
+
 #messageBox {
   position: absolute;
   left: 50%;
@@ -242,7 +281,7 @@ header h1 {
   z-index: 6;
 }
 
-/* FLYING PART */
+
 .flyingPart {
   position: fixed;
   pointer-events: none;
@@ -250,7 +289,7 @@ header h1 {
   transition: all 0.7s ease-in-out;
 }
 
-/* FINAL SCREEN */
+
 #finalReveal {
   position: absolute;
   inset: 0;
@@ -287,7 +326,7 @@ header h1 {
   text-shadow: 0 0 10px rgba(255, 241, 110, 0.35);
 }
 
-/* IMPORTANT */
+
 .hidden {
   display: none !important;
 }

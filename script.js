@@ -13,7 +13,7 @@ const partsPlaced = {
   nut: false
 };
 
-/* left to right, skipping middle because middle is the drive slot */
+
 const slotData = {
   gear: {
     slotId: "slot-1",
