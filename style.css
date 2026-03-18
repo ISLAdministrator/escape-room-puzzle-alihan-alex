@@ -179,9 +179,13 @@ header h1 {
 
 .slot.missing {
   border-style: solid;
-  border-color: #ff6b6b;
+  border-color: #ff4d4d;
   color: #ffb0b0;
   font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  background: rgba(255, 50, 50, 0.16);
+  box-shadow: 0 0 18px rgba(255, 50, 50, 0.45);
 }
 
 .hidden-drive-slot {

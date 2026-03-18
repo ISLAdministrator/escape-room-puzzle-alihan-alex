@@ -1,36 +1,21 @@
-// --- YOUTUBE BACKGROUND MUSIC ---
-let ytPlayer;
-
-// Called by the YouTube API automatically
-function onYouTubeIframeAPIReady() {
-  ytPlayer = new YT.Player("yt-player", {
-    height: "0",
-    width: "0",
-    videoId: "3Vk_QfSiVbI", // Your YouTube music ID
-    playerVars: {
-      autoplay: 0,        // Don't start automatically
-      loop: 1,            // Loop music
-      controls: 0,        // Hide controls
-      showinfo: 0,
-      modestbranding: 1,
-      playlist: "3Vk_QfSiVbI" // Needed for looping
-    }
-  });
-}
-
 const introScreen = document.getElementById("introScreen");
 const startGameBtn = document.getElementById("startGameBtn");
 const nextRoomBtn = document.getElementById("nextRoomBtn");
 const messageBox = document.getElementById("messageBox");
 const finalReveal = document.getElementById("finalReveal");
 const slot3 = document.getElementById("slot-3");
+const bgMusic = document.getElementById("bgMusic");
+const correctSound = document.getElementById("correctSound");
+const wrongSound = document.getElementById("wrongSound");
+const failSound = document.getElementById("failSound");
+const scene = document.getElementById("scene");
+
 const partsPlaced = {
   gear: false,
   bolt: false,
   spring: false,
   nut: false
 };
-
 
 const slotData = {
   gear: {
@@ -57,20 +42,53 @@ const slotData = {
 
 startGameBtn.addEventListener("click", () => {
   introScreen.style.display = "none";
+  bgMusic.volume = 0.15;
+  bgMusic.play().catch(() => {});
 });
 
-// Replace "https://your-url-here.com" with your actual link later
 nextRoomBtn.addEventListener("click", () => {
-  window.location.href = "https://isladministrator.github.io/escape-room-puzzle-sonik/"; 
+  window.location.href = "https://isladministrator.github.io/escape-room-puzzle-sonik/";
 });
 
 document.querySelectorAll(".part").forEach((part) => {
-  part.addEventListener("click", () => {
+  part.addEventListener("click", (event) => {
+    event.stopPropagation();
+
     const name = part.dataset.part;
     if (partsPlaced[name]) return;
+
+    playCorrectSound();
     animatePartToSlot(part, name);
   });
 });
+
+scene.addEventListener("click", (event) => {
+  const clickedPart = event.target.closest(".part");
+  const clickedButton = event.target.closest("#startGameBtn, #nextRoomBtn");
+
+  if (clickedPart || clickedButton) return;
+  if (!finalReveal.classList.contains("hidden")) return;
+
+  playWrongSound();
+});
+
+function playCorrectSound() {
+  correctSound.currentTime = 0;
+  correctSound.volume = 0.5;
+  correctSound.play().catch(() => {});
+}
+
+function playWrongSound() {
+  wrongSound.currentTime = 0;
+  wrongSound.volume = 0.25;
+  wrongSound.play().catch(() => {});
+}
+
+function playFailSound() {
+  failSound.currentTime = 0;
+  failSound.volume = 0.45;
+  failSound.play().catch(() => {});
+}
 
 function animatePartToSlot(part, partName) {
   const slotInfo = slotData[partName];
@@ -92,20 +110,16 @@ function animatePartToSlot(part, partName) {
   part.style.pointerEvents = "none";
 
   requestAnimationFrame(() => {
-    clone.style.left = `${slotRect.left + (slotRect.width / 2) - (partRect.width / 2)}px`;
-    clone.style.top = `${slotRect.top + (slotRect.height / 2) - (partRect.height / 2)}px`;
-    clone.style.width = "42px";
-    clone.style.height = "42px";
+    clone.style.left = `${slotRect.left + slotRect.width / 2 - 20}px`;
+    clone.style.top = `${slotRect.top + slotRect.height / 2 - 20}px`;
+    clone.style.width = "40px";
+    clone.style.height = "40px";
   });
 
-  clone.addEventListener(
-    "transitionend",
-    () => {
-      clone.remove();
-      placePartInSlot(partName);
-    },
-    { once: true }
-  );
+  clone.addEventListener("transitionend", () => {
+    clone.remove();
+    placePartInSlot(partName);
+  }, { once: true });
 }
 
 function placePartInSlot(partName) {
@@ -123,21 +137,16 @@ function placePartInSlot(partName) {
   slot.appendChild(img);
   slot.classList.add("filled");
 
-  const count = getPlacedCount();
-  messageBox.textContent = `${slotInfo.message} ${count}/4 visible parts restored.`;
+  const count = Object.values(partsPlaced).filter(Boolean).length;
+  messageBox.textContent = `${slotInfo.message} ${count}/4 parts restored.`;
 
   if (count === 4) {
     startMachineSequence();
   }
 }
 
-function getPlacedCount() {
-  return Object.values(partsPlaced).filter(Boolean).length;
-}
-
 function startMachineSequence() {
-  messageBox.textContent =
-    "All 4 visible parts installed. The machine attempts to start...";
+  messageBox.textContent = "All parts installed. The machine attempts to start...";
 
   const filledSlots = document.querySelectorAll(".slot.filled");
   let flashes = 0;
@@ -154,7 +163,10 @@ function startMachineSequence() {
       filledSlots.forEach((slot) => {
         slot.style.opacity = "1";
       });
-      revealMissingDrive();
+
+      setTimeout(() => {
+        revealMissingDrive();
+      }, 500);
     }
   }, 220);
 }
@@ -164,10 +176,22 @@ function revealMissingDrive() {
   slot3.classList.add("missing");
   slot3.textContent = "MISSING";
 
-  messageBox.textContent =
-    "The machine is assembled, but the storage drive is missing.";
+  messageBox.textContent = "The machine is assembled, but the storage drive is missing.";
 
-  setTimeout(() => {
-    finalReveal.classList.remove("hidden");
-  }, 1200);
+  playFailSound();
+
+  let redFlashes = 0;
+  const redBlink = setInterval(() => {
+    slot3.classList.toggle("missing");
+    redFlashes++;
+
+    if (redFlashes >= 10) {
+      clearInterval(redBlink);
+      slot3.classList.add("missing");
+
+      setTimeout(() => {
+        finalReveal.classList.remove("hidden");
+      }, 900);
+    }
+  }, 260);
 }
