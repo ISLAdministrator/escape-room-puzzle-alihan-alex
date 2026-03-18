@@ -46,19 +46,6 @@ body {
   font-weight: bold;
 }
 
-#startGameBtn {
-  margin-top: 14px;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(#f59b52, #ca6830);
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
 #startGameBtn:hover {
   transform: scale(1.05);
 }
@@ -326,7 +313,19 @@ header h1 {
   text-shadow: 0 0 10px rgba(255, 241, 110, 0.35);
 }
 
-
 .hidden {
   display: none !important;
+}
+
+#startGameBtn, #nextRoomBtn {
+  margin-top: 14px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(#f59b52, #ca6830);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
 }

@@ -16,14 +16,14 @@ function onYouTubeIframeAPIReady() {
       playlist: "3Vk_QfSiVbI" // Needed for looping
     }
   });
-}const introScreen = document.getElementById("introScreen");
-const startGameBtn = document.getElementById("startGameBtn");
+}
 
+const introScreen = document.getElementById("introScreen");
+const startGameBtn = document.getElementById("startGameBtn");
+const nextRoomBtn = document.getElementById("nextRoomBtn");
 const messageBox = document.getElementById("messageBox");
 const finalReveal = document.getElementById("finalReveal");
-
 const slot3 = document.getElementById("slot-3");
-
 const partsPlaced = {
   gear: false,
   bolt: false,
@@ -57,6 +57,11 @@ const slotData = {
 
 startGameBtn.addEventListener("click", () => {
   introScreen.style.display = "none";
+});
+
+// Replace "https://your-url-here.com" with your actual link later
+nextRoomBtn.addEventListener("click", () => {
+  window.location.href = "https://isladministrator.github.io/escape-room-puzzle-sonik/"; 
 });
 
 document.querySelectorAll(".part").forEach((part) => {
