@@ -1,32 +1,94 @@
-<!--This is an HTML Comment, text just for humans :) It is not part of your code.
-Good coders use comments frequently to stay organized and communicate with collaborators.
-
-The code below is basic HTML for your puzzle.
-You can edit it, add to it, and delete parts of it.
-
-DO NOT let AI code for you!!
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Escape Room</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>307 Design - Reassembling Machine</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div id="scene">
-
-    <div id="textBox">
-      This is your escape room introduction text.
-      You can change the font size in CSS and the box will grow.
+  <div id="introScreen">
+    <div class="introCard">
+      <h1>ISL Apocalypse</h1>
+      <p>
+        You leave the auditorium and step into the hallway. Thick green sludge drips
+        from the ceiling and smears the floor. The school is silent.
+      </p>
+      <p>
+        No teachers. No students. No voices.
+      </p>
+      <p>
+        You enter <strong>Room 307 - Design</strong> and discover a damaged machine on the
+        table. Four visible parts are scattered around the room.
+      </p>
+      <p class="missionText">
+        Mission: Rebuild the machine to reveal what is missing.
+      </p>
+      <button id="startGameBtn">Start Investigation</button>
     </div>
-
-    <img id="imageButton" src="start_button.png" alt="Button">
-
   </div>
 
+  <div id="gameWrapper">
+    <header>
+      <h1>307 Design - Reassembling Machine</h1>
+      <p class="subtitle">
+        Find the four visible machine parts hidden around the room and click them to install them.
+        YOU MAY NEED TO SCROLL DOWN!
+      </p>
+    </header>
+
+    <main id="scene">
+      <div id="storyBox">
+        <strong>START:</strong> You enter the dark design room and find a damaged machine on the table.
+        Rebuild it to discover what part is missing.
+      </div>
+
+      <div id="machineArea">
+        <div id="machine">
+          <div class="machine-title"></div>
+
+          <div class="slot horizontal-slot" id="slot-1"></div>
+          <div class="slot horizontal-slot" id="slot-2"></div>
+          <div class="slot horizontal-slot hidden-drive-slot" id="slot-3"></div>
+          <div class="slot horizontal-slot" id="slot-4"></div>
+          <div class="slot horizontal-slot" id="slot-5"></div>
+        </div>
+      </div>
+
+      <!-- hidden parts around room -->
+      <img class="part" id="gear" data-part="gear" src="gear.png" alt="Gear" />
+      <img class="part" id="bolt" data-part="bolt" src="bolt.png" alt="Bolt" />
+      <img class="part" id="spring" data-part="spring" src="spring.png" alt="Spring" />
+      <img class="part" id="nut" data-part="nut" src="metal_nut.png" alt="Nut" />
+
+      <div id="messageBox">
+        Click a hidden part to install it into the machine.
+      </div>
+
+      <div id="finalReveal" class="hidden">
+        <div class="finalCard">
+          <h2>Machine Reassembled... Almost.</h2>
+          <p>All four visible parts have been installed.</p>
+          <p>The system powers on, but something is still wrong.</p>
+          <p><strong>The storage drive is missing.</strong></p>
+          <p>The rat stole it.</p>
+          <p class="clue">Clue Letter: <span>Y</span></p>
+          <button id="nextRoomBtn">Go to the Gym</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+<audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="wrongSound" src="wrong.mp3"></audio>
+<audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="wrongSound" src="wrong.mp3"></audio>
+<audio id="failSound" src="fail.mp3"></audio>
+
+<script src="script.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

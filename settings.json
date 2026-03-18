@@ -4,8 +4,6 @@
   "livePreview.defaultPreviewPath": "/index.html"
 }
 
-{
-  "recommendations": [
-    "ms-vscode.live-preview"
-  ]
-}
+
+{ "recommendations":["ms-vscode.live-preview"]}
+
